@@ -1,0 +1,30 @@
+from osgeo import gdal
+import sys
+
+src_ds = gdal.Open('C:\Users\smadhu\Desktop\madhu\New Journey\world_shaded.jpg') 
+
+
+cols = src_ds.RasterXSize
+rows = src_ds.RasterYSize
+print rows, cols
+
+if src_ds is None:
+ print 'Unable to open INPUT.tif'
+ sys.exit(1)
+
+print "[ RASTER BAND COUNT ]: ", src_ds.RasterCount
+for band in range( src_ds.RasterCount ):
+ band += 1
+ print "[ GETTING BAND ]: ", band
+ srcband = src_ds.GetRasterBand(band)
+ if srcband is None:
+  continue
+ stats = srcband.GetStatistics( True, True )
+ if stats is None:
+  continue
+ #print "[ STATS ] =  Minimum=%.3f, Maximum=%.3f, Mean=%.3f, StdDev=%.3f" % (stats[0],stats[1],stats[2],stats[3])
+ print "[ NO DATA VALUE ] = ", srcband.GetNoDataValue() 
+ print "[ MIN ] = ", srcband.GetMinimum()
+ print "[ MAX ] = ", srcband.GetMaximum()
+ print "[ SCALE ] = ", srcband.GetScale()
+ print "[ UNIT TYPE ] = ", srcband.GetUnitType()
