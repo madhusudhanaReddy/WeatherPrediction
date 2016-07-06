@@ -1,0 +1,12 @@
+Error:
+
+>>> pixelToLatLon(geotifAddr,pixelPairs)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 21, in pixelToLatLon
+  File "C:\Python27\lib\site-packages\osgeo\osr.py", line 833, in TransformPoint
+    return _osr.CoordinateTransformation_TransformPoint(self, *args)
+NotImplementedError: Wrong number or type of arguments for overloaded function 'CoordinateTransformation_TransformPoint'.
+  Possible C/C++ prototypes are:
+    OSRCoordinateTransformationShadow::TransformPoint(double [3])
+    OSRCoordinateTransformationShadow::TransformPoint(double [3],double,double,double)
